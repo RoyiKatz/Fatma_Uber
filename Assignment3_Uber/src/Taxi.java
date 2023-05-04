@@ -1,8 +1,8 @@
 
 public class Taxi extends Vehicle {
 
-	double baseFare;
-	int maxPassengers;
+	protected double baseFare;
+	protected int maxPassengers;
 
 	//constructor
 	public Taxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers) {
@@ -13,7 +13,7 @@ public class Taxi extends Vehicle {
 		if (validPassengers(maxPassengers)) {
 			this.maxPassengers = maxPassengers;
 		} else {
-			throw new ArithmeticException("invalid number of passangers! must be between 1-4");
+			throw new InvalidPassengerException("invalid number of passangers! must be between 1-4");
 		}
 	}
 

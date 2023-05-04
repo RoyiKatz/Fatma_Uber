@@ -1,12 +1,12 @@
 
 public abstract class Vehicle implements Comparable {
 	
-	int licenseNumber;
-	String model;
-	int year;
-	Driver driver;
+	protected int licenseNumber;
+	protected String model;
+	protected int year;
+	protected Driver driver;
 
-	//constructor
+	// constructor
 	public Vehicle(int licenseNumber, String model, int year) {
 		
 		driver = null;
@@ -22,7 +22,12 @@ public abstract class Vehicle implements Comparable {
 		
 	}
 	
-	//func to add a driver to the vehicle
+	// get year
+	public int year() {
+		return year;
+	}
+	
+	// func to add a driver to the vehicle
 	public boolean addDriver(Driver driver) {
 		
 		if (this.driver != null) {
@@ -38,7 +43,7 @@ public abstract class Vehicle implements Comparable {
 	public abstract double calculateDrivingTime(double distance);
 	
 	public int compareTo(Object other) {
-		return this.year - ((Vehicle)other).year;
+		return this.year - ((Vehicle)other).year();
 	}
 	
 }

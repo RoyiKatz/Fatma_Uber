@@ -1,8 +1,8 @@
 
 public class Motorcycle extends Vehicle {
 	
-	int maxSpeed;
-	double engineDisplacement;
+	private int maxSpeed;
+	private double engineDisplacement;
 	
 	//constructor
 	public Motorcycle(int licenseNumber, String model, int year, int maxSpeed, double engineDisplacement) {
@@ -13,8 +13,10 @@ public class Motorcycle extends Vehicle {
 		if (maxSpeed > 0) {
 			this.maxSpeed = maxSpeed;
 		} else {
-			throw new ArithmeticException("Max speed must be greater than 0!");
+			throw new SpeedException("Max speed must be greater than 0!");
 		}
+		
+		this.engineDisplacement = engineDisplacement;
 		
 	}
 	
