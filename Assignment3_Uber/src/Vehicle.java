@@ -5,7 +5,6 @@ public abstract class Vehicle implements Comparable {
 	String model;
 	int year;
 	Driver driver;
-	boolean git_check = true;
 
 	//constructor
 	public Vehicle(int licenseNumber, String model, int year) {
