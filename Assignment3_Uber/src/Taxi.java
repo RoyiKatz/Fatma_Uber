@@ -1,3 +1,4 @@
+import Exceptions.InvalidPassengerException;
 
 public class Taxi extends Vehicle {
 

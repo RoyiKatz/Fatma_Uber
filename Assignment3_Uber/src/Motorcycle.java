@@ -1,3 +1,4 @@
+import Exceptions.SpeedException;
 
 public class Motorcycle extends Vehicle {
 	

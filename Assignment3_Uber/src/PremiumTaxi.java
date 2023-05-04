@@ -1,3 +1,4 @@
+import Interfaces.Upgradable;
 
 public class PremiumTaxi extends Taxi implements Upgradable {
 

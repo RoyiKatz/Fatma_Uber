@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class InvalidPassengerException extends RuntimeException {
 

@@ -1,3 +1,5 @@
+import Exceptions.InvalidYearException;
+import Interfaces.Comparable;
 
 public abstract class Vehicle implements Comparable {
 	
