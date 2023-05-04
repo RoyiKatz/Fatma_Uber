@@ -17,7 +17,7 @@ public abstract class Vehicle implements Comparable {
 		if (year >= 1970 && year <= 2022) {
 			this.year = year;
 		} else {
-			throw new ArithmeticException("invalid year of production - " + year + ". Year must be between 1970-2022");
+			throw new InvalidYearException("invalid year of production - " + year + ". Year must be between 1970-2022");
 		}
 		
 	}
