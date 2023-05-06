@@ -22,8 +22,9 @@ public abstract class Person implements Comparable<Person>{
 		if (gender == 'M' || gender == 'F' || gender == 'U') {
 			this.gender = gender;
 		} else {
-			throw new GenderException("invalid gender. must be 'M', 'F' or 'U'.");
+			throw new GenderExecption("invalid gender. must be 'M', 'F' or 'U'.");
 		}
+		
 	}
 
 	public abstract int compareTo(Person other);

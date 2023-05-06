@@ -1,5 +1,5 @@
 
-public class ServiceEmployee implements Person {
+public class ServiceEmployee extends Person {
 
 	private double rating;
 	private int age;
