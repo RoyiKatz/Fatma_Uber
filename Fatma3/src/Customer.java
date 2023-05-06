@@ -1,16 +1,12 @@
 
 public class Customer extends Person{
 	
-	protected int age;
-	protected char gender;
 	private int fare;
 	
 	//constructor
 	public Customer (int ID, String name, int age, char gender) {
 		
-		super(ID,name);
-		this.age = age;
-		this.gender = gender;
+		super(ID,name, age, gender);
 		fare = 10;
 	}
 	
