@@ -24,10 +24,12 @@ public abstract class Vehicle implements Comparable {
 		
 	}
 	
+	
 	// get year
 	public int year() {
 		return year;
 	}
+	
 	
 	// func to add a driver to the vehicle
 	public boolean addDriver(Driver driver) {
@@ -41,8 +43,10 @@ public abstract class Vehicle implements Comparable {
 		
 	}
 	
-	//calculate driving time based on a given distance
+	
+	// calculate driving time based on a given distance
 	public abstract double calculateDrivingTime(double distance);
+	
 	
 	public int compareTo(Object other) {
 		return this.year - ((Vehicle)other).year();

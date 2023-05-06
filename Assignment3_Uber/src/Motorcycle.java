@@ -20,6 +20,7 @@ public class Motorcycle extends Vehicle {
 		this.engineDisplacement = engineDisplacement;
 		
 	}
+
 	
 	//calculate driving time based on a given distance
 	public double calculateDrivingTime(double distance) {

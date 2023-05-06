@@ -5,7 +5,7 @@ public class Taxi extends Vehicle {
 	protected double baseFare;
 	protected int maxPassengers;
 
-	//constructor
+	// constructor
 	public Taxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers) {
 		super(licenseNumber, model, year);
 
@@ -18,13 +18,14 @@ public class Taxi extends Vehicle {
 		}
 	}
 
-	//validate max passengers number
+	
+	// validate max passengers number
 	protected boolean validPassengers(int maxPassengers) {
 		return maxPassengers >= 1 && maxPassengers <= 4;
 	}
 
 
-	//calculate driving time best on a given distance
+	// calculate driving time best on a given distance
 	public double calculateDrivingTime(double distance) {
 		
 		double P = 0.5 + (Math.random() * 0.2);
