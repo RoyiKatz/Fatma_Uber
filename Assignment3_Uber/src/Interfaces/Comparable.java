@@ -1,8 +1,8 @@
 package Interfaces;
 
 
-public interface Comparable {
+public interface Comparable<T> {
 
-	public int compareTo(Object other);
+	public int compareTo(T other);
 	
 }

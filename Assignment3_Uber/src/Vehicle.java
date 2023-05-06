@@ -1,5 +1,6 @@
 import Exceptions.InvalidYearException;
 import Interfaces.Comparable;
+import java.sql.Driver;
 
 public abstract class Vehicle implements Comparable {
 	
@@ -48,8 +49,8 @@ public abstract class Vehicle implements Comparable {
 	public abstract double calculateDrivingTime(double distance);
 	
 	
-	public int compareTo(Object other) {
-		return this.year - ((Vehicle)other).year();
+	public int compareTo(Vehicle other) {
+		return this.year - other.year();
 	}
 	
 }
