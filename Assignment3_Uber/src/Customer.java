@@ -1,11 +1,10 @@
 
-public class Customer extends Person{
+public class Customer extends Person implements Comparable<Customer>{
 	
 	private int fare;
 	
 	//constructor
 	public Customer (int ID, String name, int age, char gender) {
-		
 		super(ID,name, age, gender);
 		fare = 10;
 	}
@@ -17,7 +16,7 @@ public class Customer extends Person{
 	
 	public int giveRating() {
 		double p = 5 + Math.random() * 1;
-		int ratingnum= (int)p;
+		int ratingnum = (int)p;
 		return ratingnum;
 	}
 	
@@ -28,7 +27,6 @@ public class Customer extends Person{
 	}
 	
 	public int compareTo(Customer other) {
-
 		return this.fare - other.fare();
 	}
 

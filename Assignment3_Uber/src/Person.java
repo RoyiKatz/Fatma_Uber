@@ -1,7 +1,7 @@
 import Exceptions.GenderExecption;
 
 
-public abstract class Person implements Comparable<Person>{
+public abstract class Person{
 
 	protected int ID;
 	protected String name;
@@ -26,7 +26,5 @@ public abstract class Person implements Comparable<Person>{
 		}
 		
 	}
-
-	public abstract int compareTo(Person other);
-
+	
 }

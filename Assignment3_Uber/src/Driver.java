@@ -1,6 +1,6 @@
 
 
-public class Driver extends Person {
+public class Driver extends Person implements Comparable<Driver>{
 
 	protected String phoneNumber;
 	protected double rating;	// avg of the ratings
@@ -22,11 +22,16 @@ public class Driver extends Person {
 		total_profit = 0;
 		
 	}
+	
+	//getter
+	public double rating() {
+		return rating;
+	}
 
 	public double drivingProfit(Customer c, int time, Vehicle v) {
 		
 		double p =  1 + Math.random() * 0.5;
-		double sum = c.giveRating() + c.pay() - (time * p);
+		double sum = c.giveRating() + c.pay(time, ) - (time * p);
 		this.rating = this.rating + c.giveRating();
 		total_profit += sum;
 		return sum;
