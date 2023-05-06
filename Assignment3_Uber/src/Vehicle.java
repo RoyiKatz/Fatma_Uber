@@ -2,7 +2,7 @@ import Exceptions.InvalidYearException;
 import Interfaces.Comparable;
 import java.sql.Driver;
 
-public abstract class Vehicle implements Comparable {
+public abstract class Vehicle implements Comparable<Vehicle> {
 	
 	protected int licenseNumber;
 	protected String model;
