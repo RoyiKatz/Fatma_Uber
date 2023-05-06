@@ -1,6 +1,5 @@
 import Exceptions.InvalidYearException;
 import Interfaces.Comparable;
-import java.sql.Driver;
 
 public abstract class Vehicle implements Comparable<Vehicle> {
 	
