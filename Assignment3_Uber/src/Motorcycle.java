@@ -20,6 +20,7 @@ public class Motorcycle extends Vehicle {
 		this.engineDisplacement = engineDisplacement;
 		
 		is_deliverable = true;
+		base_fare = 0;
 	}
 
 	

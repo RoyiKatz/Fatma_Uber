@@ -25,10 +25,8 @@ public class Driver extends Employee implements Comparable<Driver>{
 	public double drivingProfit(Customer c, int time, Vehicle v) {
 		
 		double p =  1 + Math.random() * 0.5;
-		
-		double fare = (v instanceof Taxi) ? ((Taxi)v).baseFare() : 0;
-		
-		double sum = c.giveRating() + c.pay(time,fare) - (time * p);
+				
+		double sum = c.giveRating() + c.pay(time,v.baseFare()) - (time * p);
 		
 		//update rating
 		

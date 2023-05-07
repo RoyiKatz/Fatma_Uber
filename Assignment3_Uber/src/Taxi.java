@@ -2,7 +2,6 @@ import Exceptions.InvalidPassengerException;
 
 public class Taxi extends Vehicle {
 
-	protected double base_fare;
 	protected int maxPassengers;
 
 	// constructor
@@ -26,11 +25,6 @@ public class Taxi extends Vehicle {
 	}
 	
 	
-	//getter
-	public double baseFare() {
-		return base_fare;
-	}
-
 
 	// calculate driving time best on a given distance
 	public double calculateDrivingTime(double distance) {
