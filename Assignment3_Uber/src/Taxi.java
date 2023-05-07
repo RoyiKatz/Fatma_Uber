@@ -16,6 +16,8 @@ public class Taxi extends Vehicle {
 		} else {
 			throw new InvalidPassengerException("invalid number of passangers! must be between 1-4");
 		}
+		
+		is_deliverable = true;
 	}
 
 	

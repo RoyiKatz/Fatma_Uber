@@ -7,6 +7,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 	protected String model;
 	protected int year;
 	protected Driver driver;
+	protected boolean is_deliverable;
 
 	// constructor
 	public Vehicle(int licenseNumber, String model, int year) {
@@ -25,9 +26,13 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 	}
 	
 	
-	// get year
+	// getters
 	public int year() {
 		return year;
+	}
+	
+	public boolean isDeliverable() {
+		return is_deliverable;
 	}
 	
 	

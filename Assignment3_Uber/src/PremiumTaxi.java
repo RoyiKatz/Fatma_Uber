@@ -5,6 +5,7 @@ public class PremiumTaxi extends Taxi implements Upgradable {
 	// constructor
 	public PremiumTaxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers) {
 		super(licenseNumber, model, year, baseFare, maxPassengers);
+		is_deliverable = false;
 	}
 
 	
