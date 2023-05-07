@@ -14,6 +14,10 @@ public class Customer extends Person implements Comparable<Customer>{
 		return fare;
 	}
 	
+	public int age() {
+		return age;
+	}
+	
 	public int giveRating() {
 		double p = 5 + Math.random() * 1;
 		int ratingnum = (int)p;
@@ -26,6 +30,7 @@ public class Customer extends Person implements Comparable<Customer>{
 		return sum_Expense;
 	}
 	
+	// compare functions
 	public int compareTo(Customer other) {
 		if (this.fare == other.fare()) {
 			return 0;
@@ -37,4 +42,9 @@ public class Customer extends Person implements Comparable<Customer>{
 		}
 	}
 
+	
+	public int compareAgeTo(Customer other) {
+		return this.age - other.age();
+	}
+	
 }

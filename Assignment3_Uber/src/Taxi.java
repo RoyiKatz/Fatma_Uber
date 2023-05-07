@@ -2,14 +2,14 @@ import Exceptions.InvalidPassengerException;
 
 public class Taxi extends Vehicle {
 
-	protected double baseFare;
+	protected double base_fare;
 	protected int maxPassengers;
 
 	// constructor
 	public Taxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers) {
 		super(licenseNumber, model, year);
 
-		this.baseFare = baseFare;
+		base_fare = baseFare;
 
 		if (validPassengers(maxPassengers)) {
 			this.maxPassengers = maxPassengers;
@@ -20,10 +20,15 @@ public class Taxi extends Vehicle {
 		is_deliverable = true;
 	}
 
-	
 	// validate max passengers number
 	protected boolean validPassengers(int maxPassengers) {
 		return maxPassengers >= 1 && maxPassengers <= 4;
+	}
+	
+	
+	//getter
+	public double baseFare() {
+		return base_fare;
 	}
 
 
