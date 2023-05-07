@@ -1,7 +1,7 @@
 
 public class Customer extends Person implements Comparable<Customer>{
 	
-	private int fare;
+	private double fare;
 	
 	//constructor
 	public Customer (int ID, String name, int age, char gender) {
@@ -10,7 +10,7 @@ public class Customer extends Person implements Comparable<Customer>{
 	}
 	
 	//getter
-	public int fare() {
+	public double fare() {
 		return fare;
 	}
 	
@@ -27,7 +27,14 @@ public class Customer extends Person implements Comparable<Customer>{
 	}
 	
 	public int compareTo(Customer other) {
-		return this.fare - other.fare();
+		if (this.fare == other.fare()) {
+			return 0;
+		}
+		else if (this.fare > other.fare()) {
+			return 1;
+		} else {
+			return -1;
+		}
 	}
 
 }
