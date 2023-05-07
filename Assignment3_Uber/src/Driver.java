@@ -2,17 +2,16 @@
 
 public class Driver extends Employee implements Comparable<Driver>{
 
-	protected String phoneNumber;
-	protected String [] licenses;
+	private String phoneNumber;
+	private String[] licenses;
 	private double total_profit;
 
 	//constructor
 	public Driver(int ID, String name, String phoneNumber , double rating, String [] licenses) {
 		
-		super(ID,name);
+		super(ID, name, rating);
 
 		this.phoneNumber = phoneNumber;
-		this.rating = rating;
 		this.licenses = new String [licenses.length];
 		for(int i = 0; i < licenses.length; i++) {
 			this.licenses[i] = licenses[i];
@@ -40,6 +39,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 
 	}
 
+	
 	public int compareTo(Driver other) {
 		if(this.rating > other.rating())
 			return 1;

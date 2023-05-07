@@ -4,25 +4,30 @@ import Interfaces.Upgradable;
 public class ServiceEmployee extends Employee implements Comparable<ServiceEmployee>, Upgradable{
 
 	private String service_area;
-	
-	private int bonus;
+	private int total_bonus;
 	
 	
 	//constructor
 	public ServiceEmployee (int ID, String Name, double rating, int age, char gender, String serviceArea) {
 		
-		super(ID, Name, age, gender);
-		
-		this.rating = rating;
+		super(ID, Name, rating, age, gender);
 		service_area = serviceArea;
-		bonus = 0;
+		total_bonus = 0;
 		
 	}
 	
+	
 	//getters
-	public int bonus() {
-		return bonus;
+	public int totalBonus() {
+		return total_bonus;
 	}
+	
+	
+	//update bonus
+	private void getBonus(double rating) {
+		total_bonus += 2 * rating;
+	}
+	
 	
 	public void Service(ServiceCall sc) {
 		
@@ -36,16 +41,17 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 			// search for correct driver
 			
 			// update bonus
+			getBonus(sc.customer().giveRating());
 		}
 		
 	}
 
-	@Override
+
 	public int compareTo(ServiceEmployee other) {
-		return this.bonus - other.bonus();
+		return this.total_bonus - other.totalBonus();
 	}
 
-	@Override
+
 	public boolean upgrade() {
 		// TODO Auto-generated method stub
 		return false;

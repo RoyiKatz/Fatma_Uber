@@ -2,7 +2,7 @@
 
 public class ServiceCall {
 
-	private Customer costumer;
+	private Customer customer;
 	private Vehicle vehicle;
 	private String area;
 	private double distance;
@@ -10,9 +10,18 @@ public class ServiceCall {
 	//constructor
 	public ServiceCall (Customer c, Vehicle v, String serviceArea, double distance) {
 		
-		costumer = c;
+		customer = c;
 		vehicle = v;
 		area = serviceArea;
 		this.distance = distance;
+	}
+	
+	//getters
+	public String serviceArea() {
+		return area;
+	}
+	
+	public Customer customer() {
+		return customer;
 	}
 }
