@@ -1,48 +1,51 @@
 
 public class Customer extends Person implements Comparable<Customer>{
 	
-	private double fare;
+	private double total_payments;
 	
 	//constructor
 	public Customer (int ID, String name, int age, char gender) {
 		super(ID,name, age, gender);
-		fare = 10;
+		total_payments = 10;
 	}
 	
-	//getter
-	public double fare() {
-		return fare;
+	//getters
+	public double payments() {
+		return total_payments;
 	}
 	
 	public int age() {
 		return age;
 	}
 	
+	
 	public int giveRating() {
-		double p = 5 + Math.random() * 1;
-		int ratingnum = (int)p;
-		return ratingnum;
+		
+		double rating = (Math.random() * 5) + 1;
+		return (int)rating;
+	
 	}
 	
+	
 	public double pay(double time, double Fare) {
-		double sum_Expense = 2 * time + Fare ;
-		fare += sum_Expense;
-		return sum_Expense;
+		double to_pay = 2 * time + Fare ;
+		total_payments += to_pay;
+		return to_pay;
 	}
+	
 	
 	// compare functions
 	public int compareTo(Customer other) {
-		if (this.fare == other.fare()) {
+		if (total_payments == other.payments()) {
 			return 0;
 		}
-		else if (this.fare > other.fare()) {
+		else if (total_payments > other.payments()) {
 			return 1;
 		} else {
 			return -1;
 		}
 	}
 
-	
 	public int compareAgeTo(Customer other) {
 		return this.age - other.age();
 	}
