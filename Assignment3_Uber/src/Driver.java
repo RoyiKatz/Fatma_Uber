@@ -1,9 +1,8 @@
 
 
-public class Driver extends Person implements Comparable<Driver>{
+public class Driver extends Employee implements Comparable<Driver>{
 
 	protected String phoneNumber;
-	protected double rating;	// avg of the ratings
 	protected String [] licenses;
 	private double total_profit;
 
@@ -22,11 +21,7 @@ public class Driver extends Person implements Comparable<Driver>{
 		total_profit = 0;
 		
 	}
-	
-	//getter
-	public double rating() {
-		return rating;
-	}
+
 
 	public double drivingProfit(Customer c, int time, Vehicle v) {
 		
