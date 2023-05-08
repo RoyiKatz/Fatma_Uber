@@ -13,7 +13,7 @@ public class Taxi extends Vehicle {
 		if (validPassengers(maxPassengers)) {
 			this.maxPassengers = maxPassengers;
 		} else {
-			throw new InvalidPassengerException("invalid number of passangers! must be between 1-4");
+			throw new InvalidPassengerException("invalid number of passangers!");
 		}
 		
 		is_deliverable = true;
