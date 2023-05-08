@@ -39,10 +39,24 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 
 		if (service_area == sc.serviceArea()) {
 
-			// search for vehicle
+			// search for vehicle and driver
+			
+			System.out.println("Driver name: ");
+			System.out.println("License number: ");
+			System.out.println("Model: ");
 
-			// search for correct driver
+			// add driver to vehicle
+			
+			//calculate driving time
+			System.out.println("Duration: ");
+			
+			//calculate fare
+			System.out.println("Payment: ");
+			
+			//update driver profit, driver and employee rating, and employee bonus
 
+			
+			System.out.println("Enjoy!");
 		}
 
 	}

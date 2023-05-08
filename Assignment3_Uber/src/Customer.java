@@ -9,6 +9,7 @@ public class Customer extends Person implements Comparable<Customer>{
 		total_payments = 10;
 	}
 	
+	
 	//getters
 	public double payments() {
 		return total_payments;
