@@ -3,7 +3,7 @@ import Exceptions.GenderExecption;
 
 public abstract class Person{
 
-	protected int ID;
+	protected int id;
 	protected String name;
 	protected int age;
 	protected char gender;
@@ -11,7 +11,7 @@ public abstract class Person{
 
 	//constructors
 	public Person(int ID, String name) {
-		this.ID = ID;
+		this.id = ID;
 		this.name = name;
 	}
 
@@ -25,6 +25,11 @@ public abstract class Person{
 			throw new GenderExecption("invalid gender. must be 'M', 'F' or 'U'.");
 		}
 		
+	}
+	
+	//getters
+	public int id() {
+		return id;
 	}
 	
 	

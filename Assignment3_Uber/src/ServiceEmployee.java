@@ -6,6 +6,7 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 	private String service_area;
 	private int total_bonus, bonus_multiplier;	//bonus related variables
 	int last_checked_customers;
+	private boolean upgraded;
 
 
 	//constructor
@@ -15,7 +16,7 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		service_area = serviceArea;
 		total_bonus = 0;
 		last_checked_customers = 0;
-
+		upgraded = false;
 
 	}
 
@@ -23,6 +24,10 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 	//getters
 	public int totalBonus() {
 		return total_bonus;
+	}
+	
+	public boolean upgraded() {
+		return upgraded;
 	}
 
 
@@ -76,6 +81,7 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 			//update bonus multiplier
 			if (bonus_multiplier <= 8) {
 				bonus_multiplier *= 2;
+				upgraded = true;
 				return true;
 			}
 		}	
