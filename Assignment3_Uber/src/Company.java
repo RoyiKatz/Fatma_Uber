@@ -104,9 +104,9 @@ public class Company {
 	}
 	
 	
-	public static Comparable getMin(Vector<Comparable> comparables){
-		Comparable min = comparables.elementAt(0);
-		for (Comparable other: comparables) {
+	public static <T> Comparable<T> getMin(Vector<Comparable<T>> comparables){
+		Comparable<T> min = comparables.elementAt(0);
+		for (Comparable<T> other: comparables) {
 			if (min.compareTo(other) < 0) {
 				min = other;
 			}
