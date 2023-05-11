@@ -7,17 +7,17 @@ public class Company {
 	static Vector <Vehicle> vehicles;
 	static Vector <Driver> drivers;
 	static Vector <ServiceEmployee> serivce_employees;
-	
+
 
 	//constructor
 	public Company() {
-	customers = new Vector<Customer>();	
-	vehicles = new Vector<Vehicle>();
-	serivce_employees = new Vector<ServiceEmployee>();
-	drivers = new Vector<Driver>();
+		customers = new Vector<Customer>();	
+		vehicles = new Vector<Vehicle>();
+		serivce_employees = new Vector<ServiceEmployee>();
+		drivers = new Vector<Driver>();
 	}
-	
-	
+
+
 	//adding elements to lists
 	public void addCustomer(Customer c) {
 		customers.add(c);
@@ -34,8 +34,8 @@ public class Company {
 	public void addDriver(Driver driver) {
 		drivers.add(driver);	
 	}
-	
-	
+
+
 	//search for a customer base on id
 	public boolean findCustomer(int id) {
 		for (Customer c: customers) {
@@ -45,8 +45,8 @@ public class Company {
 		}
 		return false;
 	}
-	
-	
+
+
 	//check service validity
 	public boolean validService(String input) {
 		String[] services = {"delivery", "taxi", "premium taxi"};
@@ -57,44 +57,45 @@ public class Company {
 		}
 		return false;
 	}
-	
-	
+
+
 	public boolean serviceForCustomer(int customerID, String serviceType, String serviceArea, double distance) {
-		
+
 		//check if customer exists in database		
 		if (!findCustomer(customerID)) {
 			return false;
 		}
-		
+
 		//check if the service type is valid
 		if (!validService(serviceType)) {
 			return false;
 		}
-		
+
 		//check if there's no vehicles or drivers
 		if (vehicles.isEmpty() || drivers.isEmpty()) {
 			return false;
 		}
-		
+
 		//find the employee with the lowest bonus
-		
+		ServiceEmployee worker = getMin(serivce_employees);
+
 		//create a new service call
-		
-		
+
+
 		return true;
 	}
-	
-	
+
+
 	public static double totalRevenues() {
 		double total = 0;
-		
+
 		for (Driver d: drivers) {
 			total += d.profit();
 		}
 		return total;
 	}
-	
-	
+
+
 	public static double avgCustomerPayment() {
 		double total = 0;
 		for (Customer c: customers) {
@@ -102,23 +103,23 @@ public class Company {
 		}
 		return customers.isEmpty()? 0 : total / customers.size();
 	}
-	
-	
-	public static <T> Comparable<T> getMin(Vector<Comparable<T>> comparables){
-		Comparable<T> min = comparables.elementAt(0);
-		for (Comparable<T> other: comparables) {
+
+
+	public static <T extends Comparable<? super T>> T getMin(Vector<T> comparables){
+		T min = comparables.elementAt(0);
+		for (T other: comparables) {
 			if (min.compareTo(other) < 0) {
 				min = other;
 			}
 		}
-		
+
 		return min;
 	}
-	
-	
-	
+
+
+
 	public static int upgrades(Vector<Upgradable> lst) {
-		
+
 		int count = 0;
 		for (Upgradable item: lst) {
 			if(item.upgraded()) {
@@ -126,8 +127,17 @@ public class Company {
 			}
 		}
 		return count;
-		
+
 	}
 	
+	
+	public static void DeliveryVehicles() {
+		for (Vehicle v: vehicles) {
+			if(v.is_deliverable) {
+				System.out.println(v);
+			}
+		}
+	}
+
 }
 
