@@ -22,6 +22,10 @@ public class PremiumTaxi extends Taxi implements Upgradable {
 	public boolean upgraded() {
 		return upgraded;
 	}
+	
+	protected String getType() {
+		return "Premium Taxi";
+	}
 
 	
 	// upgrade interior
@@ -37,4 +41,6 @@ public class PremiumTaxi extends Taxi implements Upgradable {
 			return false;
 		}
 	}
+	
+
 }

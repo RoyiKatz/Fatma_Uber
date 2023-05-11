@@ -22,6 +22,13 @@ public class Motorcycle extends Vehicle {
 		is_deliverable = true;
 		base_fare = 0;
 	}
+	
+	
+	@Override
+	protected String getType() {
+
+		return "Motorcycle";
+	}
 
 	
 	//calculate driving time based on a given distance

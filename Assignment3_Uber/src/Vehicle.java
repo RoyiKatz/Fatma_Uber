@@ -63,4 +63,13 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 		return this.year - other.year();
 	}
 	
+	abstract protected String getType();
+	
+	
+	//toString
+	public String toString() {
+		String type = getType();
+		return "Type: " + type + ", License: " + licenseNumber + ", Model: " + model + ", Year: " + year;
+	}
+	
 }
