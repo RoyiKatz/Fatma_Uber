@@ -62,6 +62,8 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 
 			
 			System.out.println("Enjoy!");
+		} else {
+			System.out.println("Requested service area is out of range.");
 		}
 
 	}

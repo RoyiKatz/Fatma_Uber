@@ -3,6 +3,6 @@ package Interfaces;
 
 public interface Comparable<T> {
 
-	public int compareTo(Comparable<T> other);
+	public int compareTo(T other);
 	
 }
