@@ -105,10 +105,10 @@ public class Company {
 	}
 
 
-	public static <T extends Comparable<? super T>> T getMin(Vector<T> comparables){
+	public static <T extends Comparable<T>> T getMin(Vector<T> comparables){
 		T min = comparables.elementAt(0);
 		for (T other: comparables) {
-			if (min.compareTo(other) < 0) {
+			if (min.compareTo(other) > 0) {
 				min = other;
 			}
 		}
@@ -117,8 +117,7 @@ public class Company {
 	}
 
 
-
-	public static int upgrades(Vector<Upgradable> lst) {
+	public static int upgrades(Vector<? extends Upgradable> lst) {
 
 		int count = 0;
 		for (Upgradable item: lst) {
