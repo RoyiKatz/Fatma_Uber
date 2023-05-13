@@ -86,7 +86,7 @@ public class Company {
 	}
 
 
-	public static double totalRevenues() {
+	public static double totalRevenues(Vector<Driver> drivers) {
 		double total = 0;
 
 		for (Driver d: drivers) {
@@ -96,7 +96,7 @@ public class Company {
 	}
 
 
-	public static double avgCustomerPayment() {
+	public static double avgCustomerPayment(Vector<Customer> customers) {
 		double total = 0;
 		for (Customer c: customers) {
 			total += c.payments();
