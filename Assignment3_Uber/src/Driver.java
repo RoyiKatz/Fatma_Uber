@@ -1,4 +1,4 @@
-
+import Exceptions.LicenseMismatchExeption;
 
 public class Driver extends Employee implements Comparable<Driver>{
 
@@ -8,7 +8,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 
 	//constructor
 	public Driver(int ID, String name, String phoneNumber , double rating, String [] licenses) {
-		
+
 		super(ID, name, rating);
 
 		this.phoneNumber = phoneNumber;
@@ -16,12 +16,12 @@ public class Driver extends Employee implements Comparable<Driver>{
 		for(int i = 0; i < licenses.length; i++) {
 			this.licenses[i] = licenses[i];
 		}
-		
+
 		total_profit = 0;
-		
+
 	}
-	
-	
+
+
 	//getter
 	public double profit() {
 		return total_profit;
@@ -30,22 +30,46 @@ public class Driver extends Employee implements Comparable<Driver>{
 
 	public double drivingProfit(Customer c, int time, Vehicle v) {
 		
+		//check license against car
+		if (licenseMismatch(v)) {
+			throw new LicenseMismatchExeption("License incompatible with vehicle!");
+		}
+
 		double p =  1 + Math.random() * 0.5;
-		
+
 		int customer_rating = c.giveRating();
-				
+
 		double sum = customer_rating + c.pay(time,v.baseFare()) - (time * p);
-		
+
 		//update rating
 		rate(customer_rating);
 		//update total profit
 		total_profit += sum;
-		
+
 		return sum;
 
 	}
 
-	
+	//func that gets a vehicle and returns true if the license is incompatible
+	private boolean licenseMismatch(Vehicle v) {
+		boolean compatible = false;
+		if (v instanceof Motorcycle) {
+			for (String license: this.licenses) {
+				if (license == "A") {
+					compatible = true;
+				}
+			}
+		} else {
+			for (String license: this.licenses) {
+				if (license == "B") {
+					compatible = true;
+				}
+			}
+		}
+		return !compatible;
+	}
+
+
 	public int compareTo(Driver other) {
 		if(this.rating > other.rating())
 			return 1;
