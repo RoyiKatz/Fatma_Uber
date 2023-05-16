@@ -30,7 +30,11 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		return upgraded;
 	}
 
+	public String serviceArea() {
+		return service_area;
+	}
 
+	
 	//update bonus
 	private void getBonus(int rating) {
 		total_bonus += bonus_multiplier * rating;
@@ -42,29 +46,44 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		// welcome message
 		System.out.println("GetFatmaUber is here for you!");
 
+		//only if we're in the service area
 		if (service_area == sc.serviceArea()) {
-
-			// search for vehicle and driver
+	
+			//print driver and vehicle details
+			Vehicle vehicle = sc.vehicle();
+			Driver driver = vehicle.driver;
+			System.out.println("Driver name: " + driver.name());
+			System.out.println("License number: " + vehicle.licenseNumber());
+			System.out.println("Model: " + vehicle.model());
 			
-			System.out.println("Driver name: ");
-			System.out.println("License number: ");
-			System.out.println("Model: ");
-
-			// add driver to vehicle
+			//take the vehicle and driver out of the availble lists
+			Company.vehicles.remove(vehicle);
+			Company.drivers.remove(driver);
 			
 			//calculate driving time
-			System.out.println("Duration: ");
+			double time = vehicle.calculateDrivingTime(sc.distance());
+			System.out.println("Duration: " + time);
 			
-			//calculate fare
-			System.out.println("Payment: ");
+			//calculate fare, update driver profit, driver rating
+			double fare = driver.drivingProfit(sc.customer(), time, vehicle);
+			System.out.println("Payment: " + fare);
 			
-			//update driver profit, driver and employee rating, and employee bonus
-
+			// update employee rating, and employee bonus
+			int rating = sc.customer().giveRating();
+			rate(rating);
+			getBonus(rating);
 			
 			System.out.println("Enjoy!");
+			
+			//return the vehicle and driver to available lists
+			Company.vehicles.add(vehicle);
+			Company.drivers.add(driver);
+			vehicle.removeDriver();
+			
 		} else {
 			System.out.println("Requested service area is out of range.");
 		}
+		
 
 	}
 

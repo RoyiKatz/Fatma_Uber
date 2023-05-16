@@ -28,10 +28,10 @@ public class Driver extends Employee implements Comparable<Driver>{
 	}
 
 
-	public double drivingProfit(Customer c, int time, Vehicle v) {
+	public double drivingProfit(Customer c, double time, Vehicle v) {
 		
 		//check license against car
-		if (licenseMismatch(v)) {
+		if (!licenseMatch(v)) {
 			throw new LicenseMismatchExeption("License incompatible with vehicle!");
 		}
 
@@ -51,7 +51,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 	}
 
 	//func that gets a vehicle and returns true if the license is incompatible
-	private boolean licenseMismatch(Vehicle v) {
+	public boolean licenseMatch(Vehicle v) {
 		boolean compatible = false;
 		if (v instanceof Motorcycle) {
 			for (String license: this.licenses) {
@@ -66,7 +66,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 				}
 			}
 		}
-		return !compatible;
+		return compatible;
 	}
 
 

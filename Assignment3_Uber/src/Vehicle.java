@@ -41,6 +41,18 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 		return base_fare;
 	}
 	
+	public Driver driver() {
+		return driver;
+	}
+	
+	public int licenseNumber() {
+		return licenseNumber;
+	}
+	
+	public String model() {
+		return model;
+	}
+	
 	
 	// func to add a driver to the vehicle
 	public boolean addDriver(Driver driver) {
@@ -52,6 +64,11 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 			return true;
 		}
 		
+	}
+	
+	//func to remove the driver from the vehicle
+	public void removeDriver() {
+		driver = null;
 	}
 	
 	

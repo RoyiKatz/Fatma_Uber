@@ -32,5 +32,9 @@ public abstract class Person{
 		return id;
 	}
 	
+	public String name() {
+		return name;
+	}
+	
 	
 }

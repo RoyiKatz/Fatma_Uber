@@ -24,4 +24,12 @@ public class ServiceCall {
 	public Customer customer() {
 		return customer;
 	}
+	
+	public Vehicle vehicle() {
+		return vehicle;
+	}
+
+	public double distance() {
+		return distance;
+	}
 }
