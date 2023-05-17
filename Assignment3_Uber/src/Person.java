@@ -32,7 +32,8 @@ public abstract class Person{
 		return id;
 	}
 	
-	public String name() {
+	
+	public String toString() {
 		return name;
 	}
 	
