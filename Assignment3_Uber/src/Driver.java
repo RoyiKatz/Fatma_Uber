@@ -26,6 +26,9 @@ public class Driver extends Employee implements Comparable<Driver>{
 	public double profit() {
 		return total_profit;
 	}
+	public String phoneNumber() {
+		return phoneNumber;
+	}
 
 
 	public double drivingProfit(Customer c, double time, Vehicle v) {
@@ -77,4 +80,5 @@ public class Driver extends Employee implements Comparable<Driver>{
 			return -1;
 		return 0;
 	}
+
 }

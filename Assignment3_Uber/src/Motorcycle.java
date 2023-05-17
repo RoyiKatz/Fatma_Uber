@@ -24,10 +24,14 @@ public class Motorcycle extends Vehicle {
 	}
 	
 	
-	@Override
+	//getters
 	protected String getType() {
 
 		return "Motorcycle";
+	}
+	
+	public double engineDisplacement() {
+		return engineDisplacement;
 	}
 
 	
