@@ -39,6 +39,21 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 	private void getBonus(int rating) {
 		total_bonus += bonus_multiplier * rating;
 	}
+	
+	
+	//func that gets a vehicle and pairs it with a driver
+	private Driver pairDriverTo(Vehicle vehicle) {
+		
+		for (Driver d : Company.available_drivers) {
+			if (d.licenseMatch(vehicle)) {
+				vehicle.addDriver(d);
+				Company.available_drivers.remove(d);
+				return d;
+			}
+		}
+		return null;
+		
+	}
 
 
 	public void Service(ServiceCall sc) {
@@ -49,16 +64,24 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		//only if we're in the service area
 		if (service_area == sc.serviceArea()) {
 	
-			//print driver and vehicle details
 			Vehicle vehicle = sc.vehicle();
-			Driver driver = vehicle.driver;
-			System.out.println("Driver name: " + driver.name());
+
+			
+			//find and pair driver
+			Driver driver = pairDriverTo(vehicle);
+			
+			//if there isn't a driver
+			if(driver == null) {
+				System.out.println("Unfortunately we don't have a driver nearby.");
+				return;
+			}
+			
+			
+			//print driver and vehicle details
+			System.out.println("Driver name: " + driver);
 			System.out.println("License number: " + vehicle.licenseNumber());
 			System.out.println("Model: " + vehicle.model());
 			
-			//take the vehicle and driver out of the availble lists
-			Company.vehicles.remove(vehicle);
-			Company.drivers.remove(driver);
 			
 			//calculate driving time
 			double time = vehicle.calculateDrivingTime(sc.distance());
@@ -75,9 +98,8 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 			
 			System.out.println("Enjoy!");
 			
-			//return the vehicle and driver to available lists
-			Company.vehicles.add(vehicle);
-			Company.drivers.add(driver);
+			//return the driver to available list
+			Company.available_drivers.add(driver);
 			vehicle.removeDriver();
 			
 		} else {

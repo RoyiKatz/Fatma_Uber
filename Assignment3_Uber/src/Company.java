@@ -3,11 +3,13 @@ import Interfaces.*;
 import Interfaces.Comparable;
 
 public class Company {
-	public Vector <Customer> customers;
-	public static Vector <Vehicle> vehicles;
-	public static Vector <Driver> drivers;
-	public Vector <ServiceEmployee> serivce_employees;
-	public Vector<ServiceCall> calls;
+	private Vector <Customer> customers;
+	private static Vector <Vehicle> vehicles;
+	public Vector<Vehicle> availble_vehicles;
+	private Vector <Driver> drivers;
+	public static Vector<Driver> available_drivers;
+	private Vector <ServiceEmployee> serivce_employees;
+	private Vector<ServiceCall> calls;
 
 
 	//constructor
@@ -17,6 +19,9 @@ public class Company {
 		serivce_employees = new Vector<ServiceEmployee>();
 		drivers = new Vector<Driver>();
 		calls = new Vector<ServiceCall>();
+		
+		availble_vehicles = new Vector<Vehicle>();
+		available_drivers = new Vector<Driver>();
 	}
 
 
@@ -26,7 +31,12 @@ public class Company {
 	} 
 
 	public void addVehicle(Vehicle v) {
-		vehicles.add(v); 
+		vehicles.add(v);
+		
+		//check if vehicle is available
+		if (v.driver() == null) {
+			availble_vehicles.add(v);
+		}
 	}
 
 	public void addSerivceEmployee(ServiceEmployee se) {
@@ -34,7 +44,19 @@ public class Company {
 	}
 
 	public void addDriver(Driver driver) {
-		drivers.add(driver);	
+		drivers.add(driver);
+		
+		//check if driver is available
+		boolean is_free = true;
+		for (Vehicle v : vehicles) {
+			if (v.driver() == driver) {
+				is_free = false;
+				break;
+			}
+		}
+		if (is_free) {
+			available_drivers.add(driver);
+		}
 	}
 
 
@@ -60,11 +82,10 @@ public class Company {
 		return false;
 	}
 
-
 	//func that gets a service and returns a vector of appropriate vehicles
 	private Vector<Vehicle> serviceVehicles(String service) {
 		Vector<Vehicle> v_list = new Vector<Vehicle>();
-		for (Vehicle v: vehicles) {
+		for (Vehicle v: availble_vehicles) {
 			if (inService(v, service)) {
 				v_list.add(v);
 			}
@@ -72,28 +93,26 @@ public class Company {
 		return v_list;
 	}
 
-
 	//func that gets a vehicle and a service type and checks whether the vehicle is in that service
 	private boolean inService(Vehicle v, String s) {
 		switch (s) {
 		case "Delivery":
 			return v.isDeliverable();
 		case "Taxi":
-			return v instanceof Taxi;
+			return (v instanceof Taxi) && !(v instanceof PremiumTaxi);
 		case "Premium Taxi":
 			return v instanceof PremiumTaxi;
 		}
 		//default
 		return false;
 	}
-
 	
 	/*func that gets a vector of vehicles and tries to pair a vehicle with a driver. if successful it'll
  		return the vehicle. if not it'll return null */
 	private Vehicle findVehicle(Vector<Vehicle> vehicles) {
 		
 		for (Vehicle v : vehicles) {
-			if (pairDriver(v)) {
+			if (hasDriver(v)) {
 				return v;
 			}
 		}
@@ -101,12 +120,10 @@ public class Company {
 		
 	}
 	
-
 	// func that gets a vehicle and tries to pair a driver to it
-	private boolean pairDriver(Vehicle v) {
-		for(Driver d: drivers) {
+	private boolean hasDriver(Vehicle v) {
+		for(Driver d: available_drivers) {
 			if (d.licenseMatch(v)) {
-				v.addDriver(d);
 				return true;
 			}
 		}
@@ -155,7 +172,7 @@ public class Company {
 		//list all vehicles in service
 		Vector<Vehicle> in_service = serviceVehicles(serviceType);
 		
-		//find a vehicle that has a driver and pair them
+		//find a vehicle that has an available driver
 		Vehicle available = findVehicle(in_service);
 		
 		//if there's no available vehicle or driver
@@ -169,9 +186,15 @@ public class Company {
 		calls.add(call);
 		
 		//get worker to handle call
-		System.out.println("Employee to handle call: " + worker.name());
+		System.out.println("Employee to handle call: " + worker);
+		
+		//remove vehicle from available list
+		availble_vehicles.remove(available);
 		
 		worker.Service(call);
+		
+		//add back the vehicle to available list
+		availble_vehicles.add(available);
 
 		return true;
 	}
