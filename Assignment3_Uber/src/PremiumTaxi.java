@@ -3,12 +3,14 @@ import Interfaces.Upgradable;
 public class PremiumTaxi extends Taxi implements Upgradable {
 
 	private boolean upgraded;
+	private double luxury_charge;
 	
 	// constructor
-	public PremiumTaxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers) {
+	public PremiumTaxi(int licenseNumber, String model, int year, double baseFare, int maxPassengers, double luxuryCharge) {
 		super(licenseNumber, model, year, baseFare, maxPassengers);
 		is_deliverable = false;
 		upgraded = false;
+		luxury_charge = luxuryCharge;
 	}
 
 	
@@ -25,6 +27,10 @@ public class PremiumTaxi extends Taxi implements Upgradable {
 	
 	protected String getType() {
 		return "Premium Taxi";
+	}
+	
+	public double luxuryCharge() {
+		return luxury_charge;
 	}
 
 	
