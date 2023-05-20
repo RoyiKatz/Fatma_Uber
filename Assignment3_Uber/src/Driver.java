@@ -1,4 +1,6 @@
 import Exceptions.LicenseMismatchExeption;
+import Interfaces.Comparable;
+
 
 public class Driver extends Employee implements Comparable<Driver>{
 
@@ -26,6 +28,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 	public double profit() {
 		return total_profit;
 	}
+	
 	public String phoneNumber() {
 		return phoneNumber;
 	}
