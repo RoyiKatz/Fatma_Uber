@@ -1,20 +1,26 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Vector;
 import Interfaces.*;
 import Interfaces.Comparable;
 
 public class Company {
-	private Vector <Customer> customers;
-	private static Vector <Vehicle> vehicles;
-	public Vector<Vehicle> availble_vehicles;
+	public Vector <Customer> customers;
+	private static Vector <Vehicle> vehicles;	
+	public Vector<Vehicle> availble_vehicles;	//
 	private Vector <Driver> drivers;
-	public static Vector<Driver> available_drivers;
+	public static Vector<Driver> available_drivers;	//
 	private Vector <ServiceEmployee> serivce_employees;
 	private Vector<ServiceCall> calls;
 
 
 	//constructor
 	public Company() {
+		
 		customers = new Vector<Customer>();	
+		readCustomers();
+		
 		vehicles = new Vector<Vehicle>();
 		serivce_employees = new Vector<ServiceEmployee>();
 		drivers = new Vector<Driver>();
@@ -22,8 +28,88 @@ public class Company {
 		
 		availble_vehicles = new Vector<Vehicle>();
 		available_drivers = new Vector<Driver>();
+				
 	}
 
+	
+	//reading the Customers file into the company database
+	private  void readCustomers() {
+
+		String address = "src\\Data\\Customers.csv";	//file address
+		BufferedReader reader = null;
+		String line;
+
+		try {
+			//get file text
+			reader = new BufferedReader(new FileReader(address));
+
+			//skip the header row
+			reader.readLine();
+
+			//copy
+			while ((line = reader.readLine()) != null) {
+				//make an array of the row element (seperated by tab)
+				String[] row = line.split("\t");
+
+				// get the elements to right variables
+				int id = Integer.parseInt(row[0]);
+				String name = row[1];
+				int age = Integer.parseInt(row[2]);
+				char gender = row[3].charAt(0);
+
+				//make new customer
+				Customer customer = new Customer(id, name, age, gender);
+				addCustomer(customer);
+
+			}
+			
+			//close file
+			reader.close();
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	
+	//reading the service requests
+	public void readRequests() {
+		String address = "src\\Data\\Service_Requests.csv";	//file address
+		BufferedReader reader = null;
+		String line;
+
+		try {
+			//get file text
+			reader = new BufferedReader(new FileReader(address));
+
+			//skip the header row
+			reader.readLine();
+
+			//copy
+			while ((line = reader.readLine()) != null) {
+				//make an array of the row element (seperated by tab)
+				String[] row = line.split("\t");
+
+				// get the elements to right variables
+				int customer_id = Integer.parseInt(row[0]);
+				String service_type = row[1];
+				String service_area = row[2];
+				double distance = Double.parseDouble(row[3]);
+
+				//make a service call out of the data
+				serviceForCustomer(customer_id, service_type, service_area, distance);
+			}
+			
+			//close file
+			reader.close();
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	
 
 	//adding elements to lists
 	public void addCustomer(Customer c) {
@@ -73,9 +159,9 @@ public class Company {
 
 	//check service validity
 	public boolean validService(String input) {
-		String[] services = {"delivery", "taxi", "premium taxi"};
+		String[] services = {"Delivery", "Taxi", "PremiumTaxi"};
 		for (String service: services) {
-			if (input.toLowerCase() == service) {
+			if (input.equals(service)) {
 				return true;
 			}
 		}
@@ -135,7 +221,7 @@ public class Company {
 	private Vector<ServiceEmployee> employeesWithinArea(String area){
 		Vector<ServiceEmployee> employees = new Vector<ServiceEmployee>();
 		for (ServiceEmployee se : serivce_employees) {
-			if (se.serviceArea() == area) {
+			if (se.serviceArea().equals(area)) {
 				employees.add(se);
 			}
 		}
@@ -219,7 +305,7 @@ public class Company {
 	}
 
 
-	public static <T extends Comparable<T>> T getMin(Vector<T> comparables){
+	public static <T extends Comparable<? super T>> T getMin(Vector<? extends T> comparables){
 		T min = comparables.elementAt(0);
 		for (T other: comparables) {
 			if (min.compareTo(other) > 0) {
