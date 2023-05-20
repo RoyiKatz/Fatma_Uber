@@ -17,6 +17,7 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		total_bonus = 0;
 		last_checked_customers = 0;
 		upgraded = false;
+		bonus_multiplier = 2;
 
 	}
 
@@ -62,7 +63,7 @@ public class ServiceEmployee extends Employee implements Comparable<ServiceEmplo
 		System.out.println("GetFatmaUber is here for you!");
 
 		//only if we're in the service area
-		if (service_area == sc.serviceArea()) {
+		if (service_area.equals(sc.serviceArea())) {
 	
 			Vehicle vehicle = sc.vehicle();
 
