@@ -1,0 +1,16 @@
+customerID	serviceType	serviceArea	distance
+10000	Taxi	Jerusalem	48
+10001	Delivery	Haifa	52
+10002	PremiumTaxi	Beer Sheva	55
+10003	Taxi	Tel Aviv	17
+10004	Delivery	Haifa	34
+10005	Delivery	Jerusalem	66
+10006	PremiumTaxi	Beer Sheva	98
+10007	Delivery	Jerusalem	24
+10008	PremiumTaxi	Jerusalem	83
+10009	PremiumTaxi	Tel Aviv	28
+10010	PremiumTaxi	Beer Sheva	18
+10011	Taxi	Haifa	59
+10012	Taxi	Beer Sheva	61
+10013	Taxi	Haifa	78
+10014	PremiumTaxi	Tel Aviv	27
