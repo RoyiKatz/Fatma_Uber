@@ -24,7 +24,7 @@ public class Driver extends Employee implements Comparable<Driver>{
 	}
 
 
-	//getter
+	//getters
 	public double profit() {
 		return total_profit;
 	}

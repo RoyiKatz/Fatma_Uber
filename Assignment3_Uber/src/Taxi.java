@@ -25,14 +25,14 @@ public class Taxi extends Vehicle {
 	}
 	
 	
-	@Override
+	//getter
 	protected String getType() {
 
 		return "Taxi";
 	}	
 	
 
-	// calculate driving time best on a given distance
+	// calculate driving time based on a given distance
 	public double calculateDrivingTime(double distance) {
 		
 		double P = 0.5 + (Math.random() * 0.2);

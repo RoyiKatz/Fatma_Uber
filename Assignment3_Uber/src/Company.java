@@ -6,11 +6,11 @@ import Interfaces.*;
 import Interfaces.Comparable;
 
 public class Company {
-	public Vector <Customer> customers;
+	private Vector <Customer> customers;
 	private static Vector <Vehicle> vehicles;	
-	public Vector<Vehicle> availble_vehicles;	//
+	private Vector<Vehicle> availble_vehicles;
 	private Vector <Driver> drivers;
-	public static Vector<Driver> available_drivers;	//
+	public static Vector<Driver> available_drivers;
 	private Vector <ServiceEmployee> serivce_employees;
 	private Vector<ServiceCall> calls;
 
@@ -145,7 +145,7 @@ public class Company {
 		}
 	}
 
-
+	
 	//search for a customer base on id
 	public Customer findCustomer(int id) {
 		for (Customer c: customers) {
@@ -305,7 +305,7 @@ public class Company {
 	}
 
 
-	public static <T extends Comparable<? super T>> T getMin(Vector<? extends T> comparables){
+	public static <T extends Comparable<T>> T getMin(Vector<? extends T> comparables){
 		T min = comparables.elementAt(0);
 		for (T other: comparables) {
 			if (min.compareTo(other) > 0) {

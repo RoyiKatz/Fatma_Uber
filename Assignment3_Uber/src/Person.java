@@ -27,7 +27,8 @@ public abstract class Person{
 		
 	}
 	
-	//getters
+	
+	//getter
 	public int id() {
 		return id;
 	}

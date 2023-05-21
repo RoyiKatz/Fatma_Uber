@@ -20,7 +20,7 @@ public class PremiumTaxi extends Taxi implements Upgradable {
 	}
 	
 	
-	//getter
+	//getters
 	public boolean upgraded() {
 		return upgraded;
 	}

@@ -80,6 +80,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
 		return this.year - other.year();
 	}
 	
+	//return a string representation of the type of vehicle
 	abstract protected String getType();
 	
 	

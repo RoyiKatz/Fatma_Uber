@@ -17,12 +17,13 @@ public abstract class Employee extends Person {
 	}
 	
 	
-	// getters
+	// getter
 	public double rating() {
 		return rating;
 	}
 	
-	//getting a customer and updating rating
+	
+	//accepting a customer and updating rating
 	public void rate(int rating) {
 		total_customers++;
 		this.rating = ((this.rating * (total_customers - 1)) + rating) / total_customers;
